@@ -1,0 +1,7 @@
+#Add to /etc/rc.local
+
+/usr/sbin/service ntp stop
+/usr/sbin/ntpdate pool.ntp.org
+/usr/sbin/ntpdate `netstat -rn | awk '{print $2}'  | egrep -v "IP|Gateway|0.0.0.0" | head -1`
+/usr/sbin/service ntp start
+
